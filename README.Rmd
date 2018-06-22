@@ -14,7 +14,14 @@ knitr::opts_chunk$set(echo = FALSE)
 some text
 
 # The Table
-```{r cars}
-library(knitr)
-kable(cars)
+```{r phagetable, message = FALSE, warning = FALSE}
+library(tidyverse)
+read_csv("myxophages.csv",
+         col_types = cols(
+           name = col_integer(),
+           genot = col_integer(),
+           bla = col_integer()
+        )) %>%
+select(-bla, -genot) %>%
+knitr::kable()
 ```
