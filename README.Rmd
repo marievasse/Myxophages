@@ -9,19 +9,14 @@ output: md_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# The Myxophage DB
+# Myxophage Database
 
-some text
+This table summarizes information about Myxophages. The full table is available as a .csv file and below is an abstract table.
 
 # The Table
 ```{r phagetable, message = FALSE, warning = FALSE}
 library(tidyverse)
-read_csv("myxophages.csv",
-         col_types = cols(
-           name = col_integer(),
-           genot = col_integer(),
-           bla = col_integer()
-        )) %>%
-select(-bla, -genot) %>%
+read_csv("Table_Myxophages.csv") %>%
+select(-source, -transduction_capacity, -originally_described_host_range, -tail_length_nm, -tail_structure, -head_diameter_nm, -head_shape, -plaque_morphology, -similar_morphologies_to_enterophages, -morphologically_related_myxophages) %>%
 knitr::kable()
 ```
